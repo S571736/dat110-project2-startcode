@@ -103,9 +103,14 @@ public class Dispatcher extends Stopable {
         String user = msg.getUser();
 
         Logger.log("onDisconnect:" + msg.toString());
+        try {
+            storage.removeClientSession(user);
 
-        storage.removeClientSession(user);
-
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            Logger.log("Error");
+        }
+        System.out.println("done with disconnecting");
 
     }
 
@@ -143,17 +148,17 @@ public class Dispatcher extends Stopable {
     public void onPublish(PublishMsg msg) {
 
         // TODO: publish the message to clients subscribed to the topic - Ok
+
         Logger.log("onPublish:" + msg.toString());
+
         Collection<ClientSession> sessions = storage.getSessions();
 
-        for (ClientSession session : sessions) {
-            if (storage.subscriptions.get(msg.getTopic()).contains(msg.getUser())) {
-                session.send(msg);
+        for (ClientSession client : sessions) {
+            if (storage.subscriptions.get(msg.getTopic()).contains(client.getUser())) {
+                client.send(msg);
             }
             // topic and message is contained in the subscribe message
             // messages must be sent used the corresponding client session objects
-
-
         }
     }
 }

@@ -23,8 +23,8 @@ public class DisplayDevice {
         client.createTopic(TEMPTOPIC);
         client.subscribe(TEMPTOPIC);
         for (int i = 0; i < COUNT; i++) {
-            Message msg = client.receive();
-            System.out.println(msg);
+            PublishMsg msg = (PublishMsg) client.receive();
+            System.out.println(msg.toString());
 
         }
         client.unsubscribe(TEMPTOPIC);
