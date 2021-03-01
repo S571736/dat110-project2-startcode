@@ -4,6 +4,9 @@ import no.hvl.dat110.client.Client;
 import no.hvl.dat110.messages.Message;
 import no.hvl.dat110.messages.PublishMsg;
 import no.hvl.dat110.common.TODO;
+import no.hvl.dat110.messagetransport.MessagingClient;
+
+import static no.hvl.dat110.iotsystem.Common.*;
 
 public class DisplayDevice {
 	
@@ -13,10 +16,18 @@ public class DisplayDevice {
 		
 		System.out.println("Display starting ...");
 		
-		// TODO - START
-				
+		// TODO - START - Sånn?
+
+		Client client = new Client("Display device", BROKERHOST,BROKERPORT);
+		client.connect();
+		client.createTopic(TEMPTOPIC);
+		client.subscribe(TEMPTOPIC);
+		Message msg = client.receive();
+		System.out.println(msg);
+		client.unsubscribe(TEMPTOPIC);
+		client.disconnect();
+
 		// create a client object and use it to
-		
 		// - connect to the broker
 		// - create the temperature topic on the broker
 		// - subscribe to the topic
@@ -24,11 +35,7 @@ public class DisplayDevice {
 		// - unsubscribe from the topic
 		// - disconnect from the broker
 		
-		// TODO - END
-		
 		System.out.println("Display stopping ... ");
-		
-		throw new UnsupportedOperationException(TODO.method());
-		
+
 	}
 }

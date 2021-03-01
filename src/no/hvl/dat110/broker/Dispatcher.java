@@ -141,7 +141,7 @@ public class Dispatcher extends Stopable {
 
     public void onPublish(PublishMsg msg) {
 
-        // TODO: publish the message to clients subscribed to the topic - ?
+        // TODO: publish the message to clients subscribed to the topic - Ok
         Logger.log("onPublish:" + msg.toString());
         Collection<ClientSession> sessions = storage.getSessions();
 
