@@ -67,10 +67,9 @@ public class Storage {
 	public void createTopic(String topic) {
 
 		// TODO: create topic in the storage - Ok
-		if(subscriptions.get(topic)==null){
-			subscriptions.put(topic, new HashSet<String>());
-		}
-
+		Set<String> t = new HashSet<String>();
+		t.add(topic);
+		subscriptions.put(topic, t);
 
 	}
 
@@ -85,13 +84,12 @@ public class Storage {
 
 		// TODO: add the user as subscriber to the topic - Ok
 		subscriptions.get(topic).add(user);
-
+		
 	}
 
 	public void removeSubscriber(String user, String topic) {
 
 		// TODO: remove the user as subscriber to the topic - Ok
 		subscriptions.get(topic).remove(user);
-
 	}
 }
