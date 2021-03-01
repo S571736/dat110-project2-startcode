@@ -108,42 +108,34 @@ public class Dispatcher extends Stopable {
 
 	public void onCreateTopic(CreateTopicMsg msg) {
 
+		// TODO: create the topic in the broker storage - Ok
 		Logger.log("onCreateTopic:" + msg.toString());
-
-		// TODO: create the topic in the broker storage
+		storage.createTopic(msg.getTopic());
 		// the topic is contained in the create topic message
-
-		throw new UnsupportedOperationException(TODO.method());
 
 	}
 
 	public void onDeleteTopic(DeleteTopicMsg msg) {
-
+		// TODO: delete the topic from the broker storage - Ok
 		Logger.log("onDeleteTopic:" + msg.toString());
-
-		// TODO: delete the topic from the broker storage
+		storage.deleteTopic(msg.getTopic());
 		// the topic is contained in the delete topic message
-		
-		throw new UnsupportedOperationException(TODO.method());
+
 	}
 
 	public void onSubscribe(SubscribeMsg msg) {
-
+		// TODO: subscribe user to the topic - Ok
 		Logger.log("onSubscribe:" + msg.toString());
-
-		// TODO: subscribe user to the topic
+		storage.addSubscriber(msg.getUser(), msg.getTopic());
 		// user and topic is contained in the subscribe message
-		
-		throw new UnsupportedOperationException(TODO.method());
-
 	}
 
 	public void onUnsubscribe(UnsubscribeMsg msg) {
-
+		// TODO: unsubscribe user to the topic - Ok
 		Logger.log("onUnsubscribe:" + msg.toString());
-
-		// TODO: unsubscribe user to the topic
+		storage.removeSubscriber(msg.getUser(), msg.getTopic());
 		// user and topic is contained in the unsubscribe message
+
 		
 		throw new UnsupportedOperationException(TODO.method());
 	}
