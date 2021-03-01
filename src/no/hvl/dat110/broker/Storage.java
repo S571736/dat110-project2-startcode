@@ -1,7 +1,6 @@
 package no.hvl.dat110.broker;
 
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -67,7 +66,7 @@ public class Storage {
 	public void createTopic(String topic) {
 
 		// TODO: create topic in the storage - Ok
-		Set<String> t = new HashSet<String>();
+		Set<String> t = new Set<String>();
 		t.add(topic);
 		subscriptions.put(topic, t);
 
