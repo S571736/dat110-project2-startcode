@@ -106,6 +106,7 @@ public class Dispatcher extends Stopable {
 
         storage.removeClientSession(user);
 
+
     }
 
     public void onCreateTopic(CreateTopicMsg msg) {
@@ -136,7 +137,7 @@ public class Dispatcher extends Stopable {
         // TODO: unsubscribe user to the topic - Ok
         Logger.log("onUnsubscribe:" + msg.toString());
         storage.removeSubscriber(msg.getUser(), msg.getTopic());
-        // user and topic is contained in the unsubscribe messageW
+        // user and topic is contained in the unsubscribe message
     }
 
     public void onPublish(PublishMsg msg) {
@@ -152,7 +153,9 @@ public class Dispatcher extends Stopable {
             // topic and message is contained in the subscribe message
             // messages must be sent used the corresponding client session objects
 
+
         }
     }
 }
+
 

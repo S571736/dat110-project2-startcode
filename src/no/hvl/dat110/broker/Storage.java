@@ -67,9 +67,8 @@ public class Storage {
 	public void createTopic(String topic) {
 
 		// TODO: create topic in the storage - Ok
-		Set<String> t = new HashSet<String>();
-		t.add(topic);
-		subscriptions.put(topic, t);
+
+		subscriptions.put(topic, new HashSet<String>());
 
 	}
 
